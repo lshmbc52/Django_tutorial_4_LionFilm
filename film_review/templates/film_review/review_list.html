@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if reviews %}
+<div class="container mt-5">
+    <ul class="list-group">
+        {% for review in reviews %}
+        <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <h5 class="mb-1">{{ review.title }}</h5>
+                    <small class="text-muted">{{ review.created_at }}</small>
+                </div>
+                <span class="badge bg-primary rounded-pill">{{ review.rating }}/5</span>
+            </div>
+            <p class="mb-1 text-muted"><strong>영화:</strong> {{ review.film.title }}</p>
+            <p class="mb-1"><strong>작성자:</strong> {{ review.author.username }}</p>
+            <p class="mb-3">{{ review.content }}</p>
+            <small class="text-muted"><em>수정 날짜:</em> {{ review.updated_at }}</small>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% else %}
+<div class="container mt-5">
+    <h1 class="text-center text-secondary">리뷰가 없습니다.</h1>
+</div>
+{% endif %}
+{% endblock %}
