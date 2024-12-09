@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =  os.getenv("DEBUG")=="True"
+DEBUG =  os.getenv("DEBUG")=="False"
 
 ALLOWED_HOSTS = ['*']
 
@@ -81,17 +84,26 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',  # PostgreSQL 엔진 사용
+#         'NAME': 'lion_dvdrental_ijh',                    # 생성한 데이터베이스 이름
+#         'USER': os.getenv("DB_USER"),                    # PostgreSQL 사용자 이름
+#         'PASSWORD': os.getenv("DB_PASSWORD"),            # 사용자 비밀번호
+#         'HOST': os.getenv("DB_HOST"),                       # 데이터베이스 호스트 (기본값: localhost)
+#         'PORT': os.getenv("DB_PORT"),                            # PostgreSQL 기본 포트
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',  # PostgreSQL 엔진 사용
-        'NAME': 'lion_dvdrental_ijh',                    # 생성한 데이터베이스 이름
-        'USER': os.getenv("DB_USER"),                    # PostgreSQL 사용자 이름
-        'PASSWORD': os.getenv("DB_PASSWORD"),            # 사용자 비밀번호
-        'HOST': os.getenv("DB_HOST"),                       # 데이터베이스 호스트 (기본값: localhost)
-        'PORT': os.getenv("DB_PORT"),                            # PostgreSQL 기본 포트
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'lion_dvd_sh',
+        'USER': 'postgres',  # PostgreSQL 사용자 이름
+        'PASSWORD': 'sh',  # PostgreSQL 비밀번호
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

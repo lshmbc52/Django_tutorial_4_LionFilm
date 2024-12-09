@@ -3,7 +3,6 @@ from .models import Film, Review, Comment
 from django.contrib.auth.decorators import login_required
 from .forms import ReviewForm, CommentForm
 from django.views import generic
-# Create your views here.
 
 def review_list(request):
     # 리뷰 목록
